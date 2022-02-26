@@ -1,6 +1,6 @@
 {
-  "name": "itodo",
-  "short_name": "itodo",
+  "name": "organizer",
+  "short_name": "organizer",
   "icons": [
     {
       "src": "/apps/grid/android-chrome-512x512.png",
