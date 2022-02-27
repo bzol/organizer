@@ -13,7 +13,7 @@ export function App() {
     async function init() {
       const charges = (await api.scry<ChargeUpdateInitial>(scryCharges)).initial;
 
-			const handle = (param) => {console.log('gello')};
+			const handle = (param : any) => {console.log('hello')};
       const sub = await api.subscribe({app: 'todo', path:'/updates', err: handle, event:handle, quit:handle});
 			console.log(sub)
       setApps(charges);
@@ -23,26 +23,30 @@ export function App() {
   }, []);
 
   return (
-    <main className="flex items-center justify-center min-h-screen">
-      <div className="max-w-md space-y-6 py-20">
-        <h1 className="text-3xl font-bold">Welcome to organizer</h1>
-        <p>Here&apos;s your urbit&apos;s installed apps:</p>
-        {apps && (
-          <ul className="space-y-4">
-            {Object.entries(apps).map(([desk, app]) => (
-              <li key={desk} className="flex items-center space-x-3 text-sm leading-tight">
-                <AppTile {...app} />
-                <div className="flex-1 text-black">
-                  <p>
-                    <strong>{app.title || desk}</strong>
-                  </p>
-                  {app.info && <p>{app.info}</p>}
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </main>
+		<div>
+			div
+		</div>
   );
 }
+
+    /* <main className="flex items-center justify-center min-h-screen"> */
+    /*   <div className="max-w-md space-y-6 py-20"> */
+    /*     <h1 className="text-3xl font-bold">Welcome to organizer</h1> */
+    /*     <p>Here&apos;s your urbit&apos;s installed apps:</p> */
+    /*     {apps && ( */
+    /*       <ul className="space-y-4"> */
+    /*         {Object.entries(apps).map(([desk, app]) => ( */
+    /*           <li key={desk} className="flex items-center space-x-3 text-sm leading-tight"> */
+    /*             <AppTile {...app} /> */
+    /*             <div className="flex-1 text-black"> */
+    /*               <p> */
+    /*                 <strong>{app.title || desk}</strong> */
+    /*               </p> */
+    /*               {app.info && <p>{app.info}</p>} */
+    /*             </div> */
+    /*           </li> */
+    /*         ))} */
+    /*       </ul> */
+    /*     )} */
+    /*   </div> */
+    /* </main> */

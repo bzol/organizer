@@ -27,8 +27,8 @@
 +$  entries  (map id entry)
 
 +$  action
-  $%  [%add =entry]
-      [%toggle =id]
+  $%  [%add =entry]  :: prio 0
+      [%toggle =id]  :: prio 1
       [%del =id]
       [%retitle =id title=@t]
       [%redesc =id desc=@t]
