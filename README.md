@@ -39,7 +39,9 @@ To deploy, run `npm run build` in the `ui` directory which will bundle all the c
 
 11. This can now be safely committed and deployed.
 
-[react]: https://reactjs.org/
-[typescript]: https://www.typescriptlang.org/
-[tailwind css]: https://tailwindcss.com/
-[vite]: https://vitejs.dev/
+## Use Cases
+- managing your tasks
+- setting appointments in your calendar
+- storing all your rss feeds (separate agent for controlling rss feeds)
+- storing all your bookmarks in one place
+- storing all your notes
