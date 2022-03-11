@@ -6,6 +6,7 @@
       %w
       %rw
   ==
++$  resids  (list id)
 +$  permissions  (set who)
 +$  channel
   $%  *
@@ -16,15 +17,14 @@
       @
   ==
 +$  entry
-  $%  [%task desc=@t due=@d prio done=?]
-      [%cal desc=@t start=@da end=@da recur=@dr]
-      [%note text=@t]
+  $%  [%task title=@t desc=@t resids due=@d prio done=?]
+      [%cal title=@t desc=@t resids start=@da end=@da recur=@dr]
+      [%note title=@t text=@t resids]
 +$  resource
   $%  channel
       file
       entry :: task/cal/note
   ==
-+$  resids  (list id)
 +$  categories  (set @t)
 +$  prio
   $%  %high
@@ -38,7 +38,8 @@
     %singular
     %multi
   ==
-+$  view  [title=@t type resids categories permissions]
++$  style  @ud
++$  view  [title=@t style resids categories permissions]
 
 +$  friends  (set who) :: can add new items, maybe different permissions for items and views
 +$  views  (map id view)
