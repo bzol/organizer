@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Urbit from '@urbit/http-api';
 import moment from "moment";
-import Main from './components/Main';
+import Todo from './components/todo/Main';
+import {useStore, subscribe} from './data/store';
+import Calendar from './components/CustomCalendar';
 
-const api = new Urbit('', '', window.desk);
-api.ship = window.ship;
+/* const testEntry = { */
+/* 	'action' : 'add-entry', */
+/* 	'params' : { */
+/* 		'id': 'testid', */
+/* 	}, */
+/* }; */
 
-const testEntry = {
-	'action' : 'add-entry',
-	'params' : {
-		'title': 'testtitle', 
-		'desc':'testdesc', 
-		'resids': [],
-		'permissions' : [],
-		'categories' : [],
-		'modified' : 'date',
-		'type' : {}
-	},
-};
 
 const events = [
       {
@@ -27,25 +20,18 @@ const events = [
       },
     ];
 
+// middle is a calendar, side is a todo app
 export function App() {
+	const state = useStore(state => state);
 
   useEffect(() => {
-    async function init() {
-
-			const handle = (param: any) => {console.log('param: ' + param)};
-			const onSuccess = () => {console.log('onSuccess')};
-			const onError = () => {console.log('onError')};
-
-      /* const sub = await api.subscribe({app: 'org', path:'/updates', err: handle, event:handle, quit:handle}); */
-			/* const add = await api.poke({onSuccess, onError, app: 'org', mark:'org-action', json: testEntry}); */
-    }
-
+    const init = async () => await subscribe(state);
     init();
   }, []);
-// middle is a calendar, side is a todo app
+
   return (
 	<main>
-	<Main/>
+	<Todo/>
 	</main>
   );
 }

@@ -1,20 +1,16 @@
 // external dependencies
-import React, { Component, PropTypes } from 'react';
-import List from 'material-ui/List';
+import React  from 'react';
+import List from '@mui/material/List';
 // internal dependecies
 import Todo from './Todo';
 
-class TodoList extends Component {
+export const TodoList = (props) => {
 
-  constructor(props) {
-    super(props);
-  }
-  render() {
     const {
       handleRemove,
       handleCheck,
       todos,
-    } = this.props;
+    } = props;
 
     var todoNode = todos.map((todo) => {
     return (
@@ -29,11 +25,10 @@ class TodoList extends Component {
     )
   })
     return(
-      <List style={{marginLeft: '5%'}}>
+    <List style={{marginLeft: '5%'}}>
       <ul>{ todoNode }</ul>
     </List>
     )
-  }
 }
   
 export default TodoList
