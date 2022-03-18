@@ -7,7 +7,20 @@
 ++  grow
   |%
   ++  noun  update
-  ++  json  [%s 'foo']
+  :: ++  json  ~&  title.update  [%s 'foo']
+  ++  json  ::|*  =update:org
+    :: =,  enjs:format
+    :: =/  title  &3.update
+    :: ~&  ^-  entry:org  +>.update
+    :: =/  test  +>-.update
+    :: ~&  !<  @t  !>  title
+
+    %-  pairs:enjs:format
+    :~  
+    :: ['test' %s title]
+
+    ['test' %s 'foo']
+    ==
   --
 ++  grad  %noun
 --

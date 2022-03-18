@@ -6,50 +6,40 @@
       %w
       %rw
   ==
-+$  resids  (list id)
-+$  permissions  (set who)
-+$  channel
-  $%  *
-      @
-  ==
-+$  file
-  $%  *
-      @
-  ==
-+$  entry
-  $%  [%task title=@t desc=@t resids due=@d prio done=?]
-      [%cal title=@t desc=@t resids start=@da end=@da recur=@dr]
-      [%note title=@t text=@t resids]
-+$  resource
-  $%  channel
-      file
-      entry :: task/cal/note
-  ==
-+$  categories  (set @t)
 +$  prio
-  $%  %high
+  $?  %high
       %medium
       %low
   ==
-+$  type
-  $%
-    :: singular means that can only contain only 1 note or cal or task
-    :: multi is a view for items
-    %singular
-    %multi
++$  attachment
+  $?  *
+      @
   ==
-+$  style  @ud
-+$  view  [title=@t style resids categories permissions]
-
-+$  friends  (set who) :: can add new items, maybe different permissions for items and views
-+$  views  (map id view)
-+$  items  (map id item)
++$  category  @t
++$  categories  (list category)
++$  permissions  (list who)
++$  attachments  (list attachment)
++$  type
+  $%  [%task due=@da prio done=?]
+      [%cal start=@da end=@da recur=@dr] 
+      :: [%note @t]
+  ==
++$  entry
+  $:  title=@t
+      text=@t
+      =categories
+      =permissions
+      =attachments
+      =type
+  ==
++$  friends  (set who)
++$  entries  (map id entry)
 
 +$  action
-  $%  [%add-view =view]
-      :: [%add-resource =entry]
+  $%  
+      :: [%add-view =view]
+      [%add =entry]
       :: [%pair entryid=id resid=id]
-
       :: [%update =id =entry]
       :: [%toggle =id]
       :: [%attach =id =attachment]
@@ -69,26 +59,3 @@
       [%initial =entries]
   ==
 --
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:: Views should have a 'style' attribute, where you can store information
-:: about how a given view should be displayed
-
-:: +$  resource  :: json, csv, markdown, html, text from rss feeds and a lot of others $%  *
-::       @
-::       :: task, cal, note, bookmark, md, csv,
-::       :: channel, rss, urmail, groups channel, DMs
-::       :: %channel: ability to have a channel (urmail/groups) that you
-::       :: can link to an entry, with channel you only store a reference
-::       :: to resources on other agents
-::       :: %resource
-::       :: %
-::   ==
-
-:: created and modified date: should we store them?
-
-:: double permission: are you in permissions list and do you have
-:: permission for a given resource or entry, and are they read or write
-:: permissions?
-

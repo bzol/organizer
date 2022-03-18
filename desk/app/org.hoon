@@ -4,7 +4,7 @@
 +$  versioned-state
   $%  state-0
   ==
-+$  state-0  [%0 =entries:org =resources:org nextid=@ud]
++$  state-0  [%0 =entries:org =friends:org nextid=@ud]
 +$  card  card:agent:gall
 --
 %-  agent:dbug
@@ -46,7 +46,7 @@
     |=  =action:org
     ^-  (quip card _state)
     ?-    -.action
-        %add-entry
+        %add
       :_  %=  state  
           entries  (~(put by entries) nextid entry.action)
           nextid   (add nextid 1)
