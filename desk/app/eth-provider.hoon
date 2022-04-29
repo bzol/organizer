@@ -1,10 +1,10 @@
-/-  org
+/-  eth-provider
 /+  default-agent, dbug
 |%
 +$  versioned-state
   $%  state-0
   ==
-+$  state-0  [%0 =entries:org =friends:org nextid=@ud]
++$  state-0  [%0 =mode:eth-provider]
 +$  card  card:agent:gall
 --
 %-  agent:dbug
@@ -37,47 +37,36 @@
   |^
   ?>  =(src.bowl our.bowl)
   ?+    mark  (on-poke:def mark vase)
-      %org-action
+      %provider-action
     =^  cards  state
       (handle-poke !<(action:org vase))
     [cards this]
   ==
   ++  handle-poke
-    |=  =action:org
+    |=  =action:eth-provider
     ^-  (quip card _state)
     ?-    -.action
-        %add
+        %read-strict
       :_  %=  state  
-          entries  (~(put by entries) nextid entry.action)
-          nextid   (add nextid 1)
           ==
-      :~  :*  %give  %fact  ~[/updates]  %org-update
-              !>(`update:org`[%add nextid entry.action])
-          ==
-      ==
-        %test
-      ~&  'test called!'
-      ~&  +.action
-      :_  %=  state  
-          nextid   (add nextid 1)
-          ==
-      :~  :*  %give  %fact  ~[/updates]  %org-update
-              !>(`update:org`[%test nextid])
+      :: :~  :*  %give  %fact  ~[/updates]  %org-update
+      ::         !>(`update:org`[%add nextid entry.action])
+      ~
           ==
       ==
     ==
   --
 ::
-++  on-watch  :: on-watch:def
-  |=  =path
-  ^-  (quip card _this)
-  ?+    path  (on-watch:def path)
-      [%updates ~]
-    ?>  =(src.bowl our.bowl)
-    :_  this
-    :~  [%give %fact ~ %org-update !>(`update:org`initial+entries)]
-    ==
-  ==
+++  on-watch  on-watch:def
+  :: |=  =path
+  :: ^-  (quip card _this)
+  :: ?+    path  (on-watch:def path)
+  ::     [%updates ~]
+  ::   ?>  =(src.bowl our.bowl)
+  ::   :_  this
+  ::   :~  [%give %fact ~ %org-update !>(`update:org`initial+entries)]
+  ::   ==
+  :: ==
 ::
 ++  on-leave  on-leave:def
 ++  on-peek   on-peek:def

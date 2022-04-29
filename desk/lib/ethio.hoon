@@ -12,7 +12,7 @@
 ::  +request-rpc: send rpc request, with retry
 ::
 ++  request-rpc
-  |=  [url=@ta id=(unit @t) req=request:rpc:ethereum]
+  |=  [url=url @ta id=(unit @t) req=request:rpc:ethereum]
   =/  m  (strand:strandio ,json)
   ^-  form:m
   ;<  res=(list [id=@t =json])  bind:m
