@@ -25,7 +25,8 @@
       :: [%note @t]
   ==
 +$  entry
-  $:  title=@t
+  $:  =id
+      title=@t
       text=@t
       =categories
       =permissions
@@ -33,7 +34,7 @@
       =type
   ==
 +$  friends  (set who)
-+$  entries  (map id entry)
++$  entries  (list entry)
 
 +$  action
   $%  
@@ -50,9 +51,8 @@
       [%test =id]
   ==
 +$  update
-  $%  [%add =id =entry]
+  $%  [%add =entry]
       [%test =id]
-      [%test2 =id]
       :: [%del =id]
       :: [%toggle =id]
       :: [%rename =id =name]

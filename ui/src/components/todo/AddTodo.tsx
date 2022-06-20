@@ -4,6 +4,11 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import {useStore} from '../../data/store';
 
+/* const testEntry = { */
+/* 		'titl': 'testtitle2', */
+/* 		'text':'testdesc', */
+/* }; */
+
 const testEntry = {
 		'titl': 'testtitle2',
 		'text':'testdesc',

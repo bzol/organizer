@@ -48,7 +48,7 @@
     ?-    -.action
         %add
       :_  %=  state  
-          entries  (~(put by entries) nextid entry.action)
+          entries  (snoc nextid entry.action)
           nextid   (add nextid 1)
           ==
       :~  :*  %give  %fact  ~[/updates]  %org-update
